@@ -131,8 +131,10 @@ const getinterndata = async function (req, res) {  //get blog using filter query
         if (match.length == 0) {
             return res.status(404).send({ status: false, message: "No Interns Found For This College" });
         }
+        const collegedetails=JSON.parse(JSON.stringify(data))
+        collegedetails.intrests=match
 
-       res.status(200).send({status:true,data:data,"intrest":match})
+       res.status(200).send({status:true,data: collegedetails})
 
 }
     catch (err){
