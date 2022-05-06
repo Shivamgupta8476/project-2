@@ -94,7 +94,7 @@ const createInternData=async function(req,res){
     return res.status(404).send({ status:false,message: `Mobile no. >>${data.mobile} Already Registered.Please,Give Another Mobile.no`})
 }
 if (isDeleted){
-    if(typeof(isDeleted)!=Boolean){
+    if(typeof(isDeleted)!="boolean"){
         return res.status(400).send({status: false, message: "Invalid Input of isDeleted.It must be true or false "});
 
     }
@@ -120,7 +120,7 @@ const getinterndata = async function (req, res) {  //get blog using filter query
         const name = req.query.collegeName;
 
         if (!name){
-            return res.status(400).send({status:false,message:"Please Provide Name"});
+            return res.status(400).send({status:false,message:"Please Provide College Name"});
         }
         const find = await CollegeModel.findOne({name:name,isDeleted:false}).select({_id:1});
         const data =await CollegeModel.findById(find).select({_id:0,name:1,fullName:1,logoLink:1});
