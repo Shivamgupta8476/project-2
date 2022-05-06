@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const CollegeModel = require("../Models/CollegeModel");
 
 const createCollegeData = async function (req, res) {
-  try {
+
     const validatefield = (Feild) => {
       return String(Feild)
       .match(/^[a-zA-Z]/);
@@ -18,8 +18,9 @@ const createCollegeData = async function (req, res) {
 
 
 const data = req.body;
+    try {
 
-    if (Object.keys(data).length == 0) {  data.length==0
+    if (Object.keys(data).length == 0){
       return res.status(400).send({ status: false, message: "College details not given" });
     }
 
@@ -52,12 +53,11 @@ const data = req.body;
 
     const result = await CollegeModel.create(data);
     return res.status(201).send({ status:true,message: result })
-  }
+    }
 
   catch (err){
     res.status(500).send({ status: false, message: err.message });
-  }
-};
+}};
 
 
 module.exports.createCollegeData = createCollegeData;
