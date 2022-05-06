@@ -48,7 +48,7 @@ const data = req.body;
 
     const match = await CollegeModel.findOne({name: data.name})
       if (match){
-         res.status(400).send({ status:false,message: `you have already created college with ${data.name} name` })
+        return res.status(400).send({ status:false,message: `you have already created college with ${data.name} name` })
       }
 
     const result = await CollegeModel.create(data);

@@ -135,8 +135,7 @@ const getinterndata = async function (req, res) {  //get blog using filter query
         collegedetails.intrests=match
 
        res.status(200).send({status:true,data: collegedetails})
-
-}
+  }
     catch (err){
   res.status(500).send({ status: false, message: err.message });
 }};
